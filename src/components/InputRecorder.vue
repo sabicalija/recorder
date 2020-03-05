@@ -1,5 +1,6 @@
 <template>
   <div>
+    <canvas></canvas>
     <input :disabled="recorderStatus" type="text" v-model="input" />
     <button @click="onClick">{{ label }}</button>
     <button @click="onDownload">Download</button>
