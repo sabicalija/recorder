@@ -23,7 +23,7 @@ export default {
         this.recorderStatus = false;
       } else {
         this.$store.commit("save-record", {
-          scene: this.$route.params.id,
+          scene: this.$route.params.scene,
           record: this.input,
           time: new Date()
         });
