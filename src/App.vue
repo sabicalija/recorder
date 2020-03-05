@@ -10,4 +10,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+  created() {
+    const storage = localStorage.getItem("input-recorder-records");
+    if (storage) {
+      this.$store.commit("restore-state", storage);
+    }
+  }
+};
+</script>
+
 <style lang="stylus"></style>

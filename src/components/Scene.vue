@@ -13,6 +13,7 @@ export default {
   },
   methods: {
     onClick(event) {
+      /* eslint-disable no-console */
       console.log(event);
       this.$router.push({ name: "Recorder", params: { id: this.num } });
     }
