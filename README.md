@@ -1,4 +1,4 @@
-# recorder
+# Recorder
 
 ## Project setup
 ```
