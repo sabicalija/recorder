@@ -11,7 +11,7 @@ const routes = [
     component: Home
   },
   {
-    path: "/record/:id/new",
+    path: "/record/:scene/new",
     name: "Recorder",
     component: () => import(/* webpackChunkName: "recorder" */ "../views/Recorder.vue")
   },
