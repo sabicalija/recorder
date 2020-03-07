@@ -61,7 +61,6 @@ export default {
       this.seconds = pad2(diff / 1000);
       this.minutes = pad2(diff / (1000 * 60));
       this.hours = pad2(diff / (1000 * 60 * 60));
-      console.log({ diff });
     }
   },
   computed: {

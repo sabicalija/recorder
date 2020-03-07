@@ -65,7 +65,7 @@ const store = new Vuex.Store({
     stop(state) {
       state.recorder.state = "deactive";
       state.records.push({ savedOn: new Date(), track: state.recorder.recording });
-      // state.recorder.recording = [];
+      localStorage.setItem("recorder-records", JSON.stringify(state.records));
     }
   },
   actions: {},
