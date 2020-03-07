@@ -50,7 +50,7 @@ export default {
       URL.revokeObjectURL(link.href);
     },
     onTrash() {
-      this.$store.commit("delete", this.id);
+      this.$store.commit("delete", this.record.id);
       this.$store.commit("save");
     }
   }
