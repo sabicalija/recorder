@@ -49,8 +49,8 @@ export default {
     },
     tick() {
       if (this.recorder.state === "active") {
-        const l = this.recorder.recording.length;
-        this.track = this.recorder.recording.slice(l - 400, l);
+        const l = this.recorder.track.length;
+        this.track = this.recorder.track.slice(l - 400, l);
         this.updateTimestamp();
         window.requestAnimationFrame(this.tick);
       }

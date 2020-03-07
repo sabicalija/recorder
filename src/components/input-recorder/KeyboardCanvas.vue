@@ -13,8 +13,10 @@ export default {
     const bodies = document.getElementsByTagName("body");
     const body = bodies[0];
     body.addEventListener("keydown", e => {
+      /* eslint-disable no-console */
       console.log(e.key);
     });
+    /* eslint-disable no-console */
     console.log(body);
   }
 };

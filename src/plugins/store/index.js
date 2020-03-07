@@ -11,7 +11,7 @@ const store = new Vuex.Store({
     recorder: {
       state: "deactive",
       timestamp: 0,
-      recording: [],
+      track: [],
       scene: 0,
       input: {
         type: "",
@@ -42,14 +42,14 @@ const store = new Vuex.Store({
       state.recorder.state = "active";
       state.recorder.timestamp = new Date();
       state.recorder.scene = scene;
-      state.recorder.recording = [];
+      state.recorder.track = [];
     },
     stop(state) {
       state.recorder.state = "deactive";
       state.records.push({
         id: v4(),
         savedOn: new Date(),
-        track: state.recorder.recording,
+        track: state.recorder.track,
         scene: state.recorder.scene,
         input: {
           type: state.recorder.input.type,
@@ -73,7 +73,7 @@ const store = new Vuex.Store({
           timestamp: state.recorder.keyboard.timestamp
         }
       };
-      state.recorder.recording.push(entry);
+      state.recorder.track.push(entry);
     },
     updateMouse(state, { relX, relY, x, y, timestamp }) {
       state.recorder.mouse.relX = relX;

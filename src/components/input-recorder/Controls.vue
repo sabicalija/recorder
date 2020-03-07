@@ -40,13 +40,13 @@ export default {
   },
   methods: {
     onStart() {
-      if (!this.recorder.state === "active") {
+      if (this.recorder.state === "deactive") {
         this.$store.commit("start", this.$route.params.scene);
         eventBus.$emit("start-recording");
       }
     },
     onStop() {
-      if (this.recorder.state === "deactive") {
+      if (this.recorder.state === "active") {
         this.$store.commit("stop");
         this.$store.commit("save");
         eventBus.$emit("stop-recording");
@@ -56,7 +56,7 @@ export default {
   computed: {
     ...mapState(["recorder"]),
     recording() {
-      return this.$store.state.recorder.state === "active";
+      return this.recorder.state === "active";
     },
     selection: {
       get() {
