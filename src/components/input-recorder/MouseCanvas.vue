@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import event from "@/utils/app/event.js";
+import eventBus from "@/utils/app/event.js";
 import { mapState } from "vuex";
 export default {
   name: "MouseCanvas",
@@ -67,13 +67,13 @@ export default {
     ...mapState(["recorder"])
   },
   created() {
-    event.$on("start-recording", () => {
+    eventBus.$on("start-recording", () => {
       this.tick();
       this.recordDisplay = setInterval(() => {
         this.recordDisplayShow = !this.recordDisplayShow;
       }, 750);
     });
-    event.$on("stop-recording", () => {
+    eventBus.$on("stop-recording", () => {
       this.recordDisplayShow = false;
       clearInterval(this.recordDisplay);
     });

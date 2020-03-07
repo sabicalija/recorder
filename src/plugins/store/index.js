@@ -82,7 +82,6 @@ const store = new Vuex.Store({
       state.recorder.mouse.y = y;
       state.recorder.mouse.timestamp = timestamp;
     },
-
     delete(state, id) {
       const idx = state.records.findIndex(e => e.id === id);
       state.records.splice(idx, 1);

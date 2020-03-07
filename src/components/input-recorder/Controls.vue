@@ -24,14 +24,12 @@
 </template>
 
 <script>
-import event from "@/utils/app/event.js";
+import eventBus from "@/utils/app/event.js";
+import { mapState } from "vuex";
 export default {
   name: "Controls",
   data() {
     return {
-      recorder: {
-        state: false
-      },
       inputs: [
         { type: "mouse", label: "Mouse & Keyboard" },
         { type: "flipmouse", label: "Flip Mouse & Keyboard" },
@@ -42,22 +40,21 @@ export default {
   },
   methods: {
     onStart() {
-      if (!this.recorder.state) {
-        this.recorder.state = true;
+      if (!this.recorder.state === "active") {
         this.$store.commit("start", this.$route.params.scene);
-        event.$emit("start-recording");
+        eventBus.$emit("start-recording");
       }
     },
     onStop() {
-      if (this.recorder.state) {
-        this.recorder.state = false;
+      if (this.recorder.state === "deactive") {
         this.$store.commit("stop");
         this.$store.commit("save");
-        event.$emit("stop-recording");
+        eventBus.$emit("stop-recording");
       }
     }
   },
   computed: {
+    ...mapState(["recorder"]),
     recording() {
       return this.$store.state.recorder.state === "active";
     },
@@ -66,7 +63,6 @@ export default {
         return this.$store.state.recorder.input.type;
       },
       set(value) {
-        console.log("setting...", value);
         this.$store.commit(
           "type",
           this.inputs.find(e => e.type === value)
