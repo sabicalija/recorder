@@ -12,9 +12,7 @@ export default {
     }
   },
   methods: {
-    onClick(event) {
-      /* eslint-disable no-console */
-      console.log(event);
+    onClick() {
       this.$router.push({ name: "Recorder", params: { scene: this.num } });
     }
   }

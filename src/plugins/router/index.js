@@ -21,6 +21,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "scenes" */ "@/views/Scenes.vue")
   },
   {
+    path: "/replay/:id",
+    name: "Replayer",
+    component: () => import(/* webpackChunkName: "replayer" */ "@/views/Replayer.vue")
+  },
+  {
     path: "/replay",
     name: "Replay",
     component: () => import(/* webpackChunkName: "replay" */ "@/views/Replay.vue")

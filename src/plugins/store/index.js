@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import { v4 } from "uuid";
+
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
@@ -10,6 +12,11 @@ const store = new Vuex.Store({
       state: "deactive",
       timestamp: 0,
       recording: [],
+      scene: 0,
+      input: {
+        type: "",
+        label: ""
+      },
       mouse: {
         relX: 0,
         relY: 0,
@@ -25,10 +32,31 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    // record(state, record) {
-    //   state.records.push(record);
-    //   localStorage.setItem("recorder-records", JSON.stringify(state.records));
-    // },
+    load(state, records) {
+      state.records = JSON.parse(records);
+    },
+    save(state) {
+      localStorage.setItem("recorder-records", JSON.stringify(state.records));
+    },
+    start(state, scene) {
+      state.recorder.state = "active";
+      state.recorder.timestamp = new Date();
+      state.recorder.scene = scene;
+      state.recorder.recording = [];
+    },
+    stop(state) {
+      state.recorder.state = "deactive";
+      state.records.push({
+        id: v4(),
+        savedOn: new Date(),
+        track: state.recorder.recording,
+        scene: state.recorder.scene,
+        input: {
+          type: state.recorder.input.type,
+          label: state.recorder.input.label
+        }
+      });
+    },
     record(state) {
       const entry = {
         timestamp: state.recorder.timestamp,
@@ -54,18 +82,14 @@ const store = new Vuex.Store({
       state.recorder.mouse.y = y;
       state.recorder.mouse.timestamp = timestamp;
     },
-    load(state, records) {
-      state.records = JSON.parse(records);
+
+    delete(state, id) {
+      const idx = state.records.findIndex(e => e.id === id);
+      state.records.splice(idx, 1);
     },
-    start(state) {
-      state.recorder.state = "active";
-      state.recorder.timestamp = new Date();
-      state.recorder.recording = [];
-    },
-    stop(state) {
-      state.recorder.state = "deactive";
-      state.records.push({ savedOn: new Date(), track: state.recorder.recording });
-      localStorage.setItem("recorder-records", JSON.stringify(state.records));
+    type(state, input) {
+      state.recorder.input.type = input.type;
+      state.recorder.input.label = input.label;
     }
   },
   actions: {},

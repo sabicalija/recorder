@@ -1,5 +1,5 @@
 <template>
-  <div id="scene-container">
+  <div id="scenes">
     <Scene v-for="i of 3" :key="i" :num="i" />
   </div>
 </template>

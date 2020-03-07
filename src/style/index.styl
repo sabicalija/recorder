@@ -30,27 +30,45 @@ button
     box-shadow 1px 1px 3px 0px darken($dark, 30%)
     &.router-link-active:not(:first-child), &.router-link-exact-active
       background-color $accent
+    &:hover
+      background-color lighten($dark, 10%)
 
 #recorder
   background-color lighten($accent, 30%)
   padding-top 1px
   #control
     display flex
-    button
-      margin 4px
-      margin-bottom 8px
-      flex 1 1 40%
-    button:disabled
-      background-color lighten(gray, 20%)
-    #start.active
-      background-color darken($accent, 20%)
-    #stop.active
-      background-color darken(red, 20%)
+    flex-flow column nowrap
+    & > div
+      display flex
+      flex-flow row nowrap
+      select
+        margin 4px
+        margin-bottom 8px
+        font-size 1.2rem
+        font-family 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        width 100%
+        padding 18px 12px
+        background-color darken($dark, 20%)
+        border none
+        box-shadow 1px 1px 3px 0px darken($dark, 30%)
+        color white
+        cursor pointer
+        appearance none
+      button
+        margin 4px
+        flex 1 1 40%
+      button:disabled
+        background-color lighten(gray, 20%)
+      #start.active
+        background-color darken($accent, 20%)
+      #stop.active
+        background-color darken(red, 20%)
   #mouse-canvas, #keyboard-canvas
     margin 4px
     background-color white
 
-#scene-container
+#scenes
   display flex
   flex-flow column nowrap
   & > div
@@ -61,3 +79,70 @@ button
     box-shadow 1px 1px 3px 0px darken($accent, 70%)
     &:hover
       background-color lighten($accent, 30%)
+
+#replayer
+  #info
+    display flex
+    flex-flow column nowrap
+    background-color lighten($accent, 30%)
+    margin 0px
+    padding 0 4px
+    div
+      display flex
+      flex-flow row nowrap
+      padding 8px 12px
+      color white
+      & > label
+        flex 1 1 10%
+      & > span
+        flex 1 1 90%
+  #mouse-canvas, #keyboard-canvas
+    background-color lighten($accent, 30%)
+    margin 0px
+    padding 0 4px
+    svg
+      background-color white
+  #mouse-canvas
+    padding-top 4px
+
+#replay
+  display flex
+  flex-flow column nowrap
+  padding 18px 12px
+  background-color lighten($accent, 40%)
+  color darken($accent, 40%)
+  & > div
+    display flex
+    flex-flow column nowrap
+    & > div
+      padding 24px 12px
+      background-color $accent
+      box-shadow 1px 1px 3px 0px darken($accent, 70%)
+      color white
+      cursor pointer
+      display flex
+      flex-flow row nowrap
+      #info
+        font-family "Ubuntu Mono", "Courier"
+        flex 1 1 80%
+        line-height 1rem
+        text-align bottom
+        display flex
+        flex-flow column nowrap
+        & > div
+          margin 4px 0px
+          display flex
+          flex-flow row nowrap
+          & > label
+            flex 1 1 20%
+          & > span
+            flex 1 1 80%
+        #record-id
+          padding 0
+      #controls
+        font-size 1.4rem
+        flex 1 1 5%
+        display flex
+        flex-flow row nowrap
+        justify-content space-around
+        align-items center
