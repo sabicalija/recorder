@@ -1,6 +1,24 @@
 <template>
-  <div>
+  <div id="recorder">
     <canvas></canvas>
+    <div id="control">
+      <button
+        @click="onStart"
+        :disabled="recorder.status"
+        :class="{ active: !recorder.status }"
+        id="start"
+      >
+        Start
+      </button>
+      <button
+        @click="onStop"
+        :disabled="!recorder.status"
+        :class="{ active: recorder.status }"
+        id="stop"
+      >
+        Stop
+      </button>
+    </div>
   </div>
 </template>
 
@@ -9,13 +27,37 @@ export default {
   name: "InputRecorder",
   data() {
     return {
-      label: "Start",
-      recorderStatus: "disabled",
-      input: null
+      recorder: {
+        status: false
+      }
     };
   },
-  methods: {}
+  methods: {
+    onStart() {
+      console.log("onStart");
+      if (!this.recorder.status) {
+        this.recorder.status = true;
+      }
+    },
+    onStop() {
+      console.log("onStop");
+      if (this.recorder.status) {
+        this.recorder.status = false;
+      }
+    }
+  }
 };
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+#recorder
+  height 100%
+  canvas
+    width 100%
+    background-color white
+#stop
+  background-color lighten(red, 40%)
+
+button:not(.active)
+    background-color: gray !important
+</style>

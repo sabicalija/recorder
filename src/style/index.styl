@@ -1,0 +1,39 @@
+body, #app
+  max-width 1200px
+  margin auto
+  padding 0
+  height 100%
+  font-family 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  background-color $light
+  font-size 1.2rem
+
+#app
+  margin 8px
+
+button
+  background-color $accent
+  border none
+  color white
+  padding 12px 24px
+  font-size 1.4rem
+  // border-radius 0.7rem
+  box-shadow 1px 1px 3px 0px darken($dark, 30%)
+  width 100%
+
+#nav
+  display flex
+  flex-flow row nowrap
+  & > a
+    padding 18px 12px
+    color white
+    text-decoration none
+    background-color $dark
+    box-shadow 1px 1px 3px 0px darken($dark, 30%)
+    &.router-link-active:not(:first-child), &.router-link-exact-active
+      background-color $accent
+
+#recorder
+  #control
+    display flex
+    button
+      flex 1 1 40%
