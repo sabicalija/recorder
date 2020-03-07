@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import event from "@/utils/app/event.js";
 export default {
   name: "Controls",
   data() {
@@ -26,12 +27,14 @@ export default {
       if (!this.recorder.state) {
         this.recorder.state = true;
         this.$store.commit("start");
+        event.$emit("start-recording");
       }
     },
     onStop() {
       if (this.recorder.state) {
         this.recorder.state = false;
         this.$store.commit("stop");
+        event.$emit("stop-recording");
       }
     }
   },
