@@ -37,3 +37,15 @@ button
     display flex
     button
       flex 1 1 40%
+
+#scene-container
+  display flex
+  flex-flow column nowrap
+  & > div
+    padding 24px 12px
+    background-color $accent
+    color white
+    cursor pointer
+    box-shadow 1px 1px 3px 0px darken($accent, 70%)
+    &:hover
+      background-color lighten($accent, 30%)
