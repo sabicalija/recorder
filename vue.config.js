@@ -53,7 +53,7 @@ module.exports = {
       {
         exclude: [/\.map$/, /img\/favicon\//],
         maximumFileSizeToCacheInBytes: 3500000,
-        cacheId: "gamepad-demo",
+        cacheId: "input-recorder",
         importScripts: ["js/skip-waiting.js"],
         clientsClaim: true,
         skipWaiting: false

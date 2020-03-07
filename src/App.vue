@@ -5,14 +5,17 @@
       <router-link to="/record">Record</router-link>
       <router-link to="/replay">Replay</router-link>
       <router-link to="/about">About</router-link>
+      <SWUpdateInfo />
     </div>
     <router-view />
   </div>
 </template>
 
 <script>
+import SWUpdateInfo from "@/components/SWUpdateInfo.vue";
 export default {
   name: "App",
+  components: { SWUpdateInfo },
   created() {
     const records = localStorage.getItem("input-recorder-records");
     if (records) {

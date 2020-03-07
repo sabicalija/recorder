@@ -37,12 +37,14 @@ export default {
   },
   methods: {
     onStart() {
+      /* eslint-disable no-console */
       console.log("onStart");
       if (!this.recorder.status) {
         this.recorder.status = true;
       }
     },
     onStop() {
+      /* eslint-disable no-console */
       console.log("onStop");
       if (this.recorder.status) {
         this.recorder.status = false;
