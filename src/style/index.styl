@@ -16,7 +16,6 @@ button
   color white
   padding 12px 24px
   font-size 1.4rem
-  // border-radius 0.7rem
   box-shadow 1px 1px 3px 0px darken($dark, 30%)
   width 100%
 
@@ -33,10 +32,23 @@ button
       background-color $accent
 
 #recorder
+  background-color lighten($accent, 30%)
+  padding-top 1px
   #control
     display flex
     button
+      margin 4px
+      margin-bottom 8px
       flex 1 1 40%
+    button:disabled
+      background-color lighten(gray, 20%)
+    #start.active
+      background-color darken($accent, 20%)
+    #stop.active
+      background-color darken(red, 20%)
+  #mouse-canvas, #keyboard-canvas
+    margin 4px
+    background-color white
 
 #scene-container
   display flex

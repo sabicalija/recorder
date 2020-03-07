@@ -5,19 +5,33 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    records: []
+    records: [],
+    recorder: {
+      state: "deactive",
+      mouse: {
+        x: 0,
+        y: 0,
+        timestamp: 0
+      },
+      keyboard: {
+        input: "",
+        timestamp: 0
+      }
+    }
   },
   mutations: {
-    "save-record": function(state, record) {
-      if (record.name) {
-        state.records.push(record);
-      } else {
-        state.records.push({ ...record, name: `file-${state.records.length + 1}` });
-      }
-      localStorage.setItem("input-recorder-records", JSON.stringify(state.records));
+    record(state, record) {
+      state.records.push(record);
+      localStorage.setItem("recorder-records", JSON.stringify(state.records));
     },
-    "restore-state": function(state, storage) {
-      state.records = JSON.parse(storage);
+    load(state, records) {
+      state.records = JSON.parse(records);
+    },
+    start(state) {
+      state.recorder.state = "active";
+    },
+    stop(state) {
+      state.recorder.state = "deactive";
     }
   },
   actions: {},

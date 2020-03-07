@@ -17,9 +17,9 @@ export default {
   name: "App",
   components: { SWUpdateInfo },
   created() {
-    const records = localStorage.getItem("input-recorder-records");
+    const records = localStorage.getItem("recorder-records");
     if (records) {
-      this.$store.commit("restore-state", records);
+      this.$store.commit("load", records);
     }
   }
 };
