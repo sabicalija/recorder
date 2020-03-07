@@ -3,6 +3,7 @@ import App from "@/App.vue";
 import "@/utils/app/registerServiceWorker";
 import router from "@/plugins/router";
 import store from "@/plugins/store";
+import "@/plugins/icons";
 
 Vue.config.productionTip = false;
 

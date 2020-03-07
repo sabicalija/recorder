@@ -1,6 +1,7 @@
 <template>
   <div id="recorder">
-    <canvas></canvas>
+    <canvas id="mouse"></canvas>
+    <canvas id="keyboard"></canvas>
     <div id="control">
       <button
         @click="onStart"
@@ -8,6 +9,7 @@
         :class="{ active: !recorder.status }"
         id="start"
       >
+        <font-awesome-icon icon="play" />
         Start
       </button>
       <button
@@ -16,6 +18,7 @@
         :class="{ active: recorder.status }"
         id="stop"
       >
+        <font-awesome-icon icon="stop" />
         Stop
       </button>
     </div>
@@ -55,6 +58,8 @@ export default {
   canvas
     width 100%
     background-color white
+  canvas#keyboard
+    height 5rem
 #stop
   background-color lighten(red, 40%)
 
